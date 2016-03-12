@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'usuarios/new'
+
   resources :usuarios
   get 'static_pages/home'
 
