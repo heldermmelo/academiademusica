@@ -5,5 +5,35 @@ class UsuariosControllerTest < ActionController::TestCase
     get :new
     assert_response :success
   end
+test "should create usuario" do
+    assert_difference('Usuario.count') do
+      post :create, usuario: { email: @usuario.email, nome: @usuario.nome }
+    end
+
+    assert_redirected_to usuario_path(assigns(:usuario))
+  end
+
+  test "should show usuario" do
+    get :show, id: @usuario
+    assert_response :success
+  end
+
+  test "should get edit" do
+    get :edit, id: @usuario
+    assert_response :success
+  end
+
+  test "should update usuario" do
+    patch :update, id: @usuario, usuario: { email: @usuario.email, nome: @usuario.nome }
+    assert_redirected_to usuario_path(assigns(:usuario))
+  end
+
+  test "should destroy usuario" do
+    assert_difference('Usuario.count', -1) do
+      delete :destroy, id: @usuario
+    end
+
+    assert_redirected_to usuarios_path
+  end
 
 end
