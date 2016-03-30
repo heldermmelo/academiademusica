@@ -13,7 +13,7 @@ class UsuariosController < ApplicationController
   end
 
   # GET /usuarios/new
-   def new
+  def new
     @usuario = Usuario.new
   end
 
@@ -59,7 +59,7 @@ class UsuariosController < ApplicationController
       format.html { redirect_to usuarios_url, notice: 'Usuario was successfully destroyed.' }
       format.json { head :no_content }
     end
-   end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -71,4 +71,4 @@ class UsuariosController < ApplicationController
     def usuario_params
       params.require(:usuario).permit(:nome, :email)
     end
- end
+end
