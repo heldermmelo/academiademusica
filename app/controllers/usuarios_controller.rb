@@ -1,5 +1,6 @@
 class UsuariosController < ApplicationController
   before_action :set_usuario, only: [:show, :edit, :update, :destroy]
+	wrap_parameters :person, include: [:nome, :email, :password]
 
   # GET /usuarios
   # GET /usuarios.json
@@ -69,6 +70,7 @@ class UsuariosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def usuario_params
-      params.require(:usuario).permit(:nome, :email)
+      params.require(:usuario).permit(:nome, :email, :password)
+	
     end
 end
