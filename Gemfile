@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
+gem 'bootstrap-sass'
 gem 'therubyracer'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1'
 #	usada para criptografar password
