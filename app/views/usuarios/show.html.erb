@@ -1,10 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Nome:</strong>
+<% provide(:title, @usuario.nome) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="usuario_info">
+<h1>
+  <%= gravatar_for @usuario %>
   <%= @usuario.nome %>
-</p>
-
+</h1>
+</section>
+  </aside>
+</div>
 <p>
   <strong>Email:</strong>
   <%= @usuario.email %>

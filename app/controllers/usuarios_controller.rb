@@ -11,6 +11,8 @@ class UsuariosController < ApplicationController
   # GET /usuarios/1
   # GET /usuarios/1.json
   def show
+	@usuario=Usuario.find(params[:id])
+	#debugger
   end
 
   # GET /usuarios/new
