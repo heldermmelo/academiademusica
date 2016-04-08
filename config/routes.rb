@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'sessoes/new'
+   get    'login'   => 'sessoes#new'
+  post   'login'   => 'sessoes#create'
+  delete 'logout'  => 'sessoes#destroy'
+
   get 'usuarios/new'
 
   resources :usuarios
@@ -6,7 +11,7 @@ Rails.application.routes.draw do
 
   get 'static_pages/help'
   get 'assine' => 'usuarios#new'
-  resources :users
+  resources :usuarios
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
