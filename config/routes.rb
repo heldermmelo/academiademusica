@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
-  get 'sessoes/new'
-   get    'login'   => 'sessoes#new'
-  post   'login'   => 'sessoes#create'
-  delete 'logout'  => 'sessoes#destroy'
+ 
+
+resources :sessions  
+	 get 'sessions/new'
+   get    'login'   => 'sessions#new'
+  post   'login'   => 'sessions#create'
+  delete 'logout'  => 'sessions#destroy'
 
   get 'usuarios/new'
 
