@@ -1,7 +1,28 @@
 <h1>É novo aqui?</h1>
 <% provide(:title, 'assine') %>
 <h1>Assine já!</h1>
-<p></p>
-<%= render 'form' %>
+<form accept-charset="UTF-8" action="/usuarios" class="new_usuario"
+      id="new_usuario" method="post">
+  <input name="utf8" type="hidden" value="&#x2713;" />
+  <input name="authenticity_token" type="hidden"
+         value="NNb6+J/j46LcrgYUC60wQ2titMuJQ5lLqyAbnbAUkdo=" />
+  <label for="usuario_nome">Nome</label>
+  <input id="usuario_nome" name="usuario[nome]" type="text" />
+
+  <label for="usuario_email">Email</label>
+  <input id="usuario_email" name="usuario[email]" type="email" />
+
+  <label for="usuario_password">Password</label>
+  <input id="usuario_password" name="usuario[password]"
+         type="password" />
+
+  <label for="usuario_password_confirmation">Confirme seu password</label>
+  <input id="usuario_password_confirmation"
+         name="usuario[password_confirmation]" type="password" />
+
+  <input class="btn btn-primary" name="commit" type="submit"
+         value="Create my account" />
+</form>
+
 
 <%= link_to 'Back', usuarios_path %>

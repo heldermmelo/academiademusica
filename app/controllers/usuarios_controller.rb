@@ -1,5 +1,6 @@
 class UsuariosController < ApplicationController
-  before_action :set_usuario, only: [:show, :edit, :update, :destroy]
+ protect_from_forgery
+ before_action :set_usuario, only: [:show, :edit, :update, :destroy]
 	wrap_parameters :person, include: [:nome, :email, :password]
 
   # GET /usuarios

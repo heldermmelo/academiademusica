@@ -193,6 +193,9 @@ input, textarea, select, .uneditable-input {
   margin-bottom: 15px;
   @include box_sizing;  
 }
+input {
+  height: auto !important;
+}
 
 #error_explanation {
   color: #f00;
@@ -205,6 +208,19 @@ input, textarea, select, .uneditable-input {
 .field_with_errors {
   @extend .control-group !optional;
   @extend .error !optional;
+}
+.checkbox {
+  margin-top: -10px;
+  margin-bottom: 10px;
+  span {
+    margin-left: 20px;
+    font-weight: normal;
+  }
+}
+
+#session_remember_me {
+  width: auto;
+  margin-left: 0;
 }
 
 /* usuarios index */
