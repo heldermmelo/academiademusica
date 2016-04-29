@@ -15,6 +15,11 @@
   <strong>Email:</strong>
   <%= @usuario.email %>
 </p>
+<div class="body">
+	 <%= video_tag "video.m4v", :size => "320x240", :controls => true %></video>
+    <%= video_tag "video.MOV", :size => "320x240", :controls => true %></video>
 
+
+</div>
 <%= link_to 'Edit', edit_usuario_path(@usuario) %> |
 <%= link_to 'Back', usuarios_path %>

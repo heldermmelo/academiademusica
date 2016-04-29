@@ -49,6 +49,8 @@ GEM
     arel (6.0.3)
     autoprefixer-rails (6.3.5)
       execjs
+    av (0.9.0)
+      cocaine (~> 0.5.3)
     bcrypt (3.1.7)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
@@ -133,6 +135,9 @@ GEM
       cocaine (~> 0.5.5)
       mime-types
       mimemagic (= 0.3.0)
+    paperclip-av-transcoder (0.6.4)
+      av (~> 0.9.0)
+      paperclip (>= 2.5.2)
     pry (0.10.3)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -239,6 +244,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   paperclip
+  paperclip-av-transcoder
   pry
   pry-rails
   puma

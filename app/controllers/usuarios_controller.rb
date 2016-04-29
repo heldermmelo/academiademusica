@@ -1,5 +1,5 @@
 class UsuariosController < ApplicationController
- 
+skip_before_filter :verify_authenticity_token, :only => :create 
  before_action :set_usuario, only: [:show, :edit, :update, :destroy]
 	wrap_parameters :person, include: [:nome, :email, :password]
 

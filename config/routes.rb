@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
  
- root 'videos#index'
+ #root 'videos#index'
   resources :videos
   get 'visao' =>'visao#send_data'
   get '/videos/:id/like' => 'videos#like'
