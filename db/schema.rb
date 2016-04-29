@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160414234322) do
+ActiveRecord::Schema.define(version: 20160415201156) do
 
   create_table "users", force: :cascade do |t|
     t.string   "nome"
@@ -30,5 +30,36 @@ ActiveRecord::Schema.define(version: 20160414234322) do
   end
 
   add_index "usuarios", ["email"], name: "index_usuarios_on_email", unique: true
+
+  create_table "videos", force: :cascade do |t|
+    t.string   "nome"
+    t.string   "video_file_file_name"
+    t.string   "video_file_content_type"
+    t.integer  "video_file_file_size"
+    t.datetime "video_file_updated_at"
+    t.string   "mp4_file_file_name"
+    t.string   "mp4_file_content_type"
+    t.integer  "mp4_file_file_size"
+    t.datetime "mp4_file_updated_at"
+    t.string   "webm_file_file_name"
+    t.string   "webm_file_content_type"
+    t.integer  "webm_file_file_size"
+    t.datetime "webm_file_updated_at"
+    t.string   "ogg_file_file_name"
+    t.string   "ogg_file_content_type"
+    t.integer  "ogg_file_file_size"
+    t.datetime "ogg_file_updated_at"
+    t.string   "thumbnail_file_name"
+    t.string   "thumbnail_content_type"
+    t.integer  "thumbnail_file_size"
+    t.datetime "thumbnail_updated_at"
+    t.boolean  "published"
+    t.integer  "likes",                   default: 0
+    t.integer  "usuario_id"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
+
+  add_index "videos", ["usuario_id"], name: "index_videos_on_usuario_id"
 
 end

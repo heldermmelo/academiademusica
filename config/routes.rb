@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
  
+ root 'videos#index'
+  resources :videos
+  get 'visao' =>'visao#send_data'
+  get '/videos/:id/like' => 'videos#like'
+  get '/videos/:id/dislike' => 'videos#dislike'
+
+  
 
 resources :sessions  
 	 get 'sessions/new'
@@ -19,7 +26,7 @@ resources :sessions
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   root 'application#oi'
+  # root 'application#oi'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

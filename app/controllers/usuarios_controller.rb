@@ -1,5 +1,5 @@
 class UsuariosController < ApplicationController
- protect_from_forgery
+ 
  before_action :set_usuario, only: [:show, :edit, :update, :destroy]
 	wrap_parameters :person, include: [:nome, :email, :password]
 
@@ -69,6 +69,10 @@ class UsuariosController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_usuario
       @usuario = Usuario.find(params[:id])
+    end
+    
+    def set_current_usuario
+	@usuario=current_usuario
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
