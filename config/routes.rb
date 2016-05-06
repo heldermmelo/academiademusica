@@ -2,6 +2,7 @@ Rails.application.routes.draw do
  
  #root 'videos#index'
   resources :videos
+  get 'upload' => 'videos#new'
   get 'visao' =>'visao#send_data'
   get '/videos/:id/like' => 'videos#like'
   get '/videos/:id/dislike' => 'videos#dislike'

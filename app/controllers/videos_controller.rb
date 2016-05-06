@@ -1,6 +1,6 @@
 class VideosController < ApplicationController
- before_action :log_in
-  before_action :set_video, only: [:show, :edit, :like, :dislike]
+ #before_action :log_in
+  #before_action :set_video, only: [:show, :edit, :like, :dislike]
 
   # All published videos
   def index
@@ -19,7 +19,7 @@ class VideosController < ApplicationController
   end
 
   def create
-    @video = Video.new(video_params)
+    @video = Video.new
 
     respond_to do |format|
       if @video.save
@@ -51,6 +51,6 @@ class VideosController < ApplicationController
   end
 
   def video_params
-    params.require(:video).permit(:video_file, :name)
+    params.require(:video).permit(:id, :video_file, :nome)
   end
 end

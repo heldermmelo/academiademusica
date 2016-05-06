@@ -16,9 +16,9 @@
   <%= @usuario.email %>
 </p>
 <div class="body">
-	 <%= video_tag "video.m4v", :size => "320x240", :controls => true %></video>
-    <%= video_tag "video.MOV", :size => "320x240", :controls => true %></video>
-
+	
+	<% if false%> <%= video_tag (@Usuario.video :size => "320x240", :controls => true) %></video>
+   <% end %>
 
 </div>
 <%= link_to 'Edit', edit_usuario_path(@usuario) %> |

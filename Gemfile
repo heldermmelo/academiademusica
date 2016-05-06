@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+#gem 'activeadmin'
 gem 'bootstrap-sass'
 gem 'therubyracer'
 gem 'haml'

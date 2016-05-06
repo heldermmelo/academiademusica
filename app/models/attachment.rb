@@ -1,5 +1,6 @@
 module Paperclip
   class Attachment
+  belongs_to Usuario
     Paperclip::Attachment.interpolations[:content_type_extension] = proc do |attachment, style_name|
   case
     when ((style = attachment.styles[style_name]) && !style[:format].blank?) then style[:format]
@@ -8,14 +9,11 @@ module Paperclip
     File.extname(attachment.original_filename).gsub(/^\.+/, "")
   end
 end
- {  :small => '36x36#',
-                    :medium => '72x72#',
-                    :large => '115x115#' },
-                    :url => '/:class/:id/:style.:content_type_extension',
-                    :path => ':rails_root/assets/:id_partition/:style.:content_type_extension',
-                    :processors => lambda { |a| a.video? ? [:video_thumbnail] : [:thumbnail] }
 
-  def video?
+    styles: lambda { |a| a.instance.is_image? ? {:small => "x200>", :medium => "x300>", :large => "x400>"}  : {:thumb => { :geometry => "100x100#", :format => 'jpg', :time => 10}, :medium => { :geometry => "300x300#", :format => 'jpg', :time => 10}}},
+    processors: lambda { |a| a.is_video? ? [ :ffmpeg ] : [ :thumbnail ] }
+  
+   def video?
     [ 'application/x-mp4',
       'video/mpeg',
       'video/quicktime',
