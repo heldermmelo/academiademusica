@@ -4,7 +4,7 @@ class VideosController < ApplicationController
 
   # All published videos
   def index
-    @videos = Video.where(published: true)
+    @videos = @usuarios_videos
     render stream:true
   end
 
@@ -12,7 +12,12 @@ class VideosController < ApplicationController
   end
 
   def new
-    @video = Video.new
+    def add
+     @usuario = Usuario.find(session[:user_id])
+     @video = Video.find(params[:id])
+     @usuario.videos << @video
+     flash[:notice] = 'Video was saved.'
+   end
   end
 
   def edit
@@ -46,11 +51,17 @@ class VideosController < ApplicationController
    end
 
   private
+
+  def usuarios_videos
+  	@usuario = Usuario.find(session[:usuario_id])
+	@videos = Video.find(params[:id])
+        @usuarios_videos = [@usuario, @videos]
+  end
   def set_video
-    @video = Video.find(params[:id])
+    @videos = Video.find(params[:id])
   end
 
   def video_params
-    params.require(:video).permit(:id, :video_file, :nome)
+    params.require(:video).permit(:id, :data, :titulo)
   end
 end

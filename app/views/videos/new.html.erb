@@ -2,8 +2,9 @@
   <div class="row">
     <div class="col-md-6 col-sm-12">
       <h2>Upload new video</h2>
-      <%= simple_form_for @video, html: { multipart: true } do |f| %>
-        <%= f.file_field :video %>
+      <%= form_for Video.new, html: { multipart: true } do |f| %>
+         
+	 <%= f.file_field :video %>
 
         
         <%= f.button :submit, class: 'btn-primary', value: 'Upload Video' %>

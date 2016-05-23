@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160503234527) do
+ActiveRecord::Schema.define(version: 20160521213900) do
 
   create_table "users", force: :cascade do |t|
     t.string   "nome"
@@ -23,43 +23,22 @@ ActiveRecord::Schema.define(version: 20160503234527) do
   create_table "usuarios", force: :cascade do |t|
     t.string   "nome"
     t.string   "email"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.string   "password_digest"
     t.string   "remember_digest"
+    t.integer  "usuarios_videos_id"
   end
 
   add_index "usuarios", ["email"], name: "index_usuarios_on_email", unique: true
+  add_index "usuarios", ["usuarios_videos_id"], name: "index_usuarios_on_usuarios_videos_id"
 
-  create_table "videos", force: :cascade do |t|
-    t.string   "nome"
-    t.string   "video_file_file_name"
-    t.string   "video_file_content_type"
-    t.integer  "video_file_file_size"
-    t.datetime "video_file_updated_at"
-    t.string   "mp4_file_file_name"
-    t.string   "mp4_file_content_type"
-    t.integer  "mp4_file_file_size"
-    t.datetime "mp4_file_updated_at"
-    t.string   "webm_file_file_name"
-    t.string   "webm_file_content_type"
-    t.integer  "webm_file_file_size"
-    t.datetime "webm_file_updated_at"
-    t.string   "ogg_file_file_name"
-    t.string   "ogg_file_content_type"
-    t.integer  "ogg_file_file_size"
-    t.datetime "ogg_file_updated_at"
-    t.string   "thumbnail_file_name"
-    t.string   "thumbnail_content_type"
-    t.integer  "thumbnail_file_size"
-    t.datetime "thumbnail_updated_at"
-    t.boolean  "published"
-    t.integer  "likes",                   default: 0
-    t.integer  "usuario_id"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+  create_table "usuarios_videos", id: false, force: :cascade do |t|
+    t.integer "usuario_id", null: false
+    t.integer "video_id",   null: false
   end
 
-  add_index "videos", ["usuario_id"], name: "index_videos_on_usuario_id"
+# Could not dump table "videos" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
 end

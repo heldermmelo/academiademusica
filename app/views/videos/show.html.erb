@@ -1,8 +1,11 @@
 <div class="container">
-  <div class="row video-full" data-video-id="<%= @video.id %>">
+ 
     <div class="col-md-10">
       <h1>
-        <%= @video.name %>
+        <%= @video.titulo %>
+	  </source>
+</video>
+	<%= video_tag bscene.video.url(:medium), controls: true, style: "max-width: 100%;" %>
       </h1>
       <p class="small">
         <%= link_to 'Back to videos' ,videos_path %>

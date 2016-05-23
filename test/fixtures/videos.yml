@@ -1,23 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  nome: MyString
-  video_file: 
-  mp4_file: 
-  webm_file: 
-  ogg_file: 
-  thumbnail: 
+  titulo: MyString
+  criado_em: 2016-05-13
+  descricao: MyText
+  thumbnail_file_name: MyString
+  thumbnail_updated_at: 2016-05-13 17:45:49
   published: false
-  likes: 1
-  usuario_id: 
 
 two:
-  nome: MyString
-  video_file: 
-  mp4_file: 
-  webm_file: 
-  ogg_file: 
-  thumbnail: 
+  titulo: MyString
+  criado_em: 2016-05-13
+  descricao: MyText
+  thumbnail_file_name: MyString
+  thumbnail_updated_at: 2016-05-13 17:45:49
   published: false
-  likes: 1
-  usuario_id: 

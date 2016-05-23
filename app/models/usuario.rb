@@ -1,6 +1,7 @@
 class Usuario < ActiveRecord::Base
-	
-	 has_many :videos
+	#self.primary_key = "usuario_id"
+	has_many :usuarios_videos
+	has_many :videos, :through => :usuarios_videos
 
 	attr_accessor :remember_token
 	before_save { self.email = email.downcase }
@@ -12,7 +13,7 @@ class Usuario < ActiveRecord::Base
 	uniqueness: {case_sensitive: false}
 	has_secure_password
   	validates :password, presence: true, length: { minimum: 6 }
-	has_attached_file :video, :styles =>{medium = "300x300" =>:thumb} 
+#	has_attached_file :video, :styles =>{medium = "300x300" =>:thumb} 
 
 	# Returns the hash digest of the given string.
   def Usuario.digest(string)

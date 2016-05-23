@@ -1,43 +1,20 @@
 class Video < ActiveRecord::Base
-  belongs_to :usuario
+#	self.primary_key = "video_id"
+	has_many :usuarios_videos
+	has_many :usuarios, :through => :usuarios_videos
+	#validates_attachment_presence :data
+#validates_attachment_size :data, less_than: 100.megabytes # if you want a max file size
+#validates_attachment_content_type :data, content_type: /\Avideo\/.*\Z/ # or you can specify individual content types you want to allow
 
-# Paperclip attachments declaration
-  has_attached_file :video_file
-  has_attached_file :mp4_file
-  has_attached_file :webm_file
-  has_attached_file :ogg_file
-  # Styles declaration makes paperclip to use imagemagick to resize image to given size
-  has_attached_file :thumbnail, styles: { medium_nr: "250x150!" }
+has_attached_file :data,
+  url: '/videos/:id/:style/:basename.:extension', # whatever you want
+  styles: {
+    poster: { size: '640x480', format: 'jpg' }, # this takes a snapshot of the video to have as your poster
+    v_large_webm: { geometry: '640x480', format: 'webm' }, # your webm format
+    v_large_mp4: { geometry: '640x480', format: 'mp4' }, # your mp4 format
+    v_large_MOV: { geometry: '640x480', format: 'MOV' } # your mp4 format
 
-  # Paperclip requires to set attachment validators
-  validates_attachment_content_type :video_file, content_type: /\Avideo/
-  validates_attachment_content_type :mp4_file, content_type: /.*/
-  validates_attachment_content_type :webm_file, content_type: /.*/
-  validates_attachment_content_type :ogg_file, content_type: /.*/
-
-  # We want video model always to have :video_file attachment
-  validates_attachment_presence :video_file
-
-  # Publish video para torná-lo disponível
-  def publish!
-    self.published = true
-    save
-  end
-
-  # Increment likes counter
-  def like!
-    self.likes += 1
-    save
-  end
-
-  # Decrease likes counter
-  def dislike!
-    self.likes -= 1
-    save
-  end
-
-  # Checks if all formats are already encoded, the simplest way
-  def all_formats_encoded?
-    self.webm_file.path && self.mp4_file.path && self.ogg_file.path ? true : false
-  end
+  },
+  processors: [:ffmpeg],
+  auto_rotate: true
 end
