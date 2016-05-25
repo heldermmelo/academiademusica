@@ -12,19 +12,19 @@ class VideosController < ApplicationController
   end
 
   def new
-    def add
+    
      @usuario = Usuario.find(session[:user_id])
      @video = Video.find(params[:id])
      @usuario.videos << @video
      flash[:notice] = 'Video was saved.'
-   end
+   
   end
 
   def edit
   end
 
   def create
-    @video = Video.new
+    @video = Video.create(video_params)
 
     respond_to do |format|
       if @video.save
@@ -62,6 +62,6 @@ class VideosController < ApplicationController
   end
 
   def video_params
-    params.require(:video).permit(:id, :data, :titulo)
+    params.require(:video).permit(:id, :titulo, :descricao, :data )
   end
 end
