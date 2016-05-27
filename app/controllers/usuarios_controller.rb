@@ -65,22 +65,7 @@ skip_before_filter :verify_authenticity_token, :only => :create
       format.json { head :no_content }
     end
   end
- # POST /upload
-  # POST /upload.json
-  def upload
-    @video = Video.new(video_params)
-	current_usuario.remember	
-    respond_to do |format|
-      if @video.save
-        format.html { redirect_to @video, notice: 'Usuario was successfully created.' }
-        format.json { render :show, status: :created, location: @video }
-      else
-        format.html { render :new }
-        format.json { render json: @video.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
+ 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_usuario

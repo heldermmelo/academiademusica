@@ -4,7 +4,7 @@
       <h2>Upload new video</h2>
       <%= form_for Video.new, html: { multipart: true } do |f| %>
          
-	 <%= f.file_field :video %>
+	 <%= render 'form' %>
 
         
         <%= f.button :submit, class: 'btn-primary', value: 'Upload Video' %>
